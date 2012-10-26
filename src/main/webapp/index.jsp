@@ -8,6 +8,7 @@
   information (such as the contextPath) and pass it to the JavaScript environment on the client.
   --%>
   <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="jscharts.js"></script>
   <script type="text/javascript">
     var config = {
       contextPath: '${pageContext.request.contextPath}'
