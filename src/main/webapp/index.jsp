@@ -23,5 +23,8 @@
   <button type="button" onclick="displayDate()">Display Date</button>
   <div id="body"></div>
 
+  <div id="graph">
+  </div>
+
 </body>
 </html>
