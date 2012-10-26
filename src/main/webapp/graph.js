@@ -8,23 +8,50 @@ $(function() {
     json_string = $("#body").html();
     json_object = jQuery.parseJSON(json_string);
 
-    // add to p#demo for debugging
+    //alert(JSON.stringify(json_object.YAHOO));
+
     $("p#demo").html(json_string);
     // remove #body's content so that DOMNodeInserted
     $("#body").html('');
   });
-
-  var myData = new Array([10, 2], [15, 0], [18, 3], [19, 6], [20, 8.5], [25, 10], [30, 9], [35, 8], [40, 5], [45, 6], [50, 2.5]);
+  
   var myChart = new JSChart('graph', 'line');
-  myChart.setDataArray(myData);
-  myChart.setLineColor('#8D9386');
-  myChart.setLineWidth(4);
-  myChart.setTitleColor('#7D7D7D');
-  myChart.setAxisColor('#9F0505');
-  myChart.setGridColor('#a4a4a4');
-  myChart.setAxisValuesColor('#333639');
-  myChart.setAxisNameColor('#333639');
-  myChart.setTextPaddingLeft(0);
+  myChart.setDataArray([[1, 80],[2, 40],[3, 60],[4, 65],[5, 50],[6, 50],[7, 60],[8, 80],[9, 150],[10, 100]], 'blue');
+  myChart.setDataArray([[1, 100],[2, 55],[3, 80],[4, 115],[5, 80],[6, 70],[7, 30],[8, 130],[9, 160],[10, 170]], 'green');
+  myChart.setDataArray([[1, 150],[2, 25],[3, 100],[4, 80],[5, 20],[6, 65],[7, 0],[8, 155],[9, 190],[10, 200]], 'gray');
+  myChart.setSize(550, 300);
+  myChart.setAxisValuesNumberY(5);
+  myChart.setIntervalStartY(0);
+  myChart.setIntervalEndY(200);
+  myChart.setLabelX([2,'p1']);
+  myChart.setLabelX([4,'p2']);
+  myChart.setLabelX([6,'p3']);
+  myChart.setLabelX([8,'p4']);
+  myChart.setLabelX([10,'p5']);
+  myChart.setAxisValuesNumberX(5);
+  myChart.setShowXValues(false);
+  myChart.setTitleColor('#454545');
+  myChart.setAxisValuesColor('#454545');
+  myChart.setLineColor('#A4D314', 'green');
+  myChart.setLineColor('#BBBBBB', 'gray');
+  myChart.setTooltip([1,' ']);
+  myChart.setTooltip([2,' ']);
+  myChart.setTooltip([3,' ']);
+  myChart.setTooltip([4,' ']);
+  myChart.setTooltip([5,' ']);
+  myChart.setTooltip([6,' ']);
+  myChart.setTooltip([7,' ']);
+  myChart.setTooltip([8,' ']);
+  myChart.setTooltip([9,' ']);
+  myChart.setTooltip([10,' ']);
+  myChart.setFlagColor('#9D16FC');
+  myChart.setFlagRadius(4);
+  myChart.setAxisPaddingRight(100);
+  myChart.setLegendShow(true);
+  myChart.setLegendPosition(490, 80);
+  myChart.setLegendForLine('blue', 'Click me');
+  myChart.setLegendForLine('green', 'Click me');
+  myChart.setLegendForLine('gray', 'Click me');
   myChart.draw();
 
 });
@@ -33,3 +60,7 @@ function displayDate()
 {
     document.getElementById("demo").innerHTML=Date();
 }
+
+
+
+

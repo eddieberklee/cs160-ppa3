@@ -43,6 +43,10 @@ function(dom, unloader, cometd)
     var data = {"YAHOO":{"price":[],"change":[]},
                 "GOOGLE":{"price":[],"change":[]},
                 "MSFT":{"price":[],"change":[]}};
+    var data2 = {"YAHOO":[],
+                    "GOOGLE":[],
+                    "MSFT":[]};
+        var counter = 0;
         
     // Function invoked when first contacting the server and
     // when the server has lost the state of this client
@@ -54,14 +58,18 @@ function(dom, unloader, cometd)
             {
                 cometd.subscribe('/hello', function(message)
                 {
-                    data[message.data.symbol].price.push(parseFloat(message.data.price));
-                    data[message.data.symbol].change.push(parseFloat(message.data.change));
-                    var str = JSON.stringify(data, undefined, 2);
+                    //data[message.data.symbol].price.push(parseFloat(message.data.price));
+                    //data[message.data.symbol].change.push(parseFloat(message.data.change));
+                                 
+                    //var str = JSON.stringify(data, undefined, 2);
              
                 	// dom.byId('body').innerHTML = '<div>Name: ' + message.data.symbol + '   Price:'+ message.data.price + '   Change: ' + message.data.change
                   //      +'<br>' + str + '</div>';
-                	  dom.byId('body').innerHTML = str;
                                  
+                      data2[message.data.symbol].push([counter, parseFloat(message.data.price)]);
+                      var str2 = JSON.stringify(data2, undefined, 2);
+                	  dom.byId('body').innerHTML = str2;
+                                 counter += 1;
                     });
                     
                 // Publish on a service channel since the message is for the server only
