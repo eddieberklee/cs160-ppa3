@@ -58,8 +58,9 @@ function(dom, unloader, cometd)
                     data[message.data.symbol].change.push(parseFloat(message.data.change));
                     var str = JSON.stringify(data, undefined, 2);
              
-                	dom.byId('body').innerHTML = '<div>Name: ' + message.data.symbol + '   Price:'+ message.data.price + '   Change: ' + message.data.change
-                        +'<br>' + str + '</div>';
+                	// dom.byId('body').innerHTML = '<div>Name: ' + message.data.symbol + '   Price:'+ message.data.price + '   Change: ' + message.data.change
+                  //      +'<br>' + str + '</div>';
+                	  dom.byId('body').innerHTML = str;
                                  
                     });
                     
