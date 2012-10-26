@@ -50,7 +50,7 @@ function(dom, unloader, cometd)
                 cometd.subscribe('/hello', function(message)
                 {
                 	dom.byId('body').innerHTML += '<div>Name: ' + message.data.symbol + '   Price:'+ message.data.price + '   Change: ' + message.data.change +'</div>';
-				});
+				        });
                 // Publish on a service channel since the message is for the server only
                 cometd.publish('/service/hello', { name: 'World' });
             });

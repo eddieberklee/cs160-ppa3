@@ -1,6 +1,8 @@
 require(['dojo/dom', 'dojo/_base/unload', 'dojox/cometd', 'dojo/domReady!'],
 function(dom, unloader, cometd)
 {
+        
+
     function _connectionEstablished()
     {
         dom.byId('body').innerHTML += '<div>CometD Connection Established</div>';
@@ -38,7 +40,10 @@ function(dom, unloader, cometd)
             _connectionBroken();
         }
     }
-
+    var data = {"YAHOO":{"price":[],"change":[]},
+                "GOOGLE":{"price":[],"change":[]},
+                "MSFT":{"price":[],"change":[]}};
+        
     // Function invoked when first contacting the server and
     // when the server has lost the state of this client
     function _metaHandshake(handshake)
@@ -49,8 +54,15 @@ function(dom, unloader, cometd)
             {
                 cometd.subscribe('/hello', function(message)
                 {
-                	dom.byId('body').innerHTML += '<div>Name: ' + message.data.symbol + '   Price:'+ message.data.price + '   Change: ' + message.data.change +'</div>';
-				        });
+                    data[message.data.symbol].price.push(parseFloat(message.data.price));
+                    data[message.data.symbol].change.push(parseFloat(message.data.change));
+                    var str = JSON.stringify(data, undefined, 2);
+             
+                	dom.byId('body').innerHTML = '<div>Name: ' + message.data.symbol + '   Price:'+ message.data.price + '   Change: ' + message.data.change
+                        +'<br>' + str + '</div>';
+                                 
+                    });
+                    
                 // Publish on a service channel since the message is for the server only
                 cometd.publish('/service/hello', { name: 'World' });
             });

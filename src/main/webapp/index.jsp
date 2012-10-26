@@ -17,6 +17,9 @@
 </head>
 <body>
 
+  <p id="demo">This is a paragraph.</p>
+  
+  <button type="button" onclick="displayDate()">Display Date</button>
   <div id="body"></div>
 
 </body>
