@@ -9,6 +9,7 @@
   --%>
   <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="jscharts.js"></script>
+<script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
   <script type="text/javascript">
     var config = {
       contextPath: '${pageContext.request.contextPath}'
@@ -22,9 +23,12 @@
   
   <button type="button" onclick="displayDate()">Display Date</button>
   <div id="body"></div>
+<div id="placeholder" style="width:600px;height:300px;"></div>
 
+<p>You can update a chart periodically to get a real-time effect
+by using a timer to insert the new data in the plot and redraw it.</p>
 
-  <div id="graph">Loading...</div>
+<p>Time between updates: <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> milliseconds</p>
 
 
 </body>
