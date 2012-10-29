@@ -11,12 +11,21 @@
   <script type="text/javascript" src="jscharts.js"></script>
   <script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
   <script language="javascript" type="text/javascript" src="flot/jquery.flot.selection.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript">
     var config = {
       contextPath: '${pageContext.request.contextPath}'
     };
   </script>
   <script src="graph.js"></script>
+  <style>
+td.legendLabel {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+  </style>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
 

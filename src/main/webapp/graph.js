@@ -123,12 +123,7 @@ $(function() {
         plot = $.plot(placeholder, [ yah, goog, ms ],
           $.extend(true, {}, options, {
             xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
-          })
-        );
-    });
-                 
-    var plot = $.plot($("#placeholder"), [ yah, goog, ms ], options);
-    
+          })); }); var plot = $.plot($("#placeholder"), [ yah, goog, ms ], options); 
     function update() {
     if (doupdate) {
         plot.setData([ yah, goog, ms ]);
@@ -138,10 +133,10 @@ $(function() {
         
         options = {
         series: { shadowSize: 0,
-        series: {
-        lines: { show: true },
-        points: { show: true }
-        }
+          series: {
+            lines: { show: true },
+            points: { show: true }
+          }
         }, // drawing is faster without shadows
         yaxis: { min: 0, max: 1200 },
         xaxis: { min: 0, max: maxx, show: true },
@@ -150,6 +145,12 @@ $(function() {
         };
         plot = $.plot($("#placeholder"), [ yah, goog, ms ], options);
         setTimeout(update, updateInterval);
+
+        $("td.legendLabel").click(function() {
+          console.warn("hiahsidfa;sldkf");
+          alert($(this).text());
+          company = $(this).text();
+        });
     }
     
     }
