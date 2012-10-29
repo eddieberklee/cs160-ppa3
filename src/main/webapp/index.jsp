@@ -8,8 +8,9 @@
   information (such as the contextPath) and pass it to the JavaScript environment on the client.
   --%>
   <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="jscharts.js"></script>
-<script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
+  <script type="text/javascript" src="jscharts.js"></script>
+  <script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
+  <script language="javascript" type="text/javascript" src="flot/jquery.flot.selection.js"></script>
   <script type="text/javascript">
     var config = {
       contextPath: '${pageContext.request.contextPath}'
@@ -24,6 +25,7 @@
   <button type="button" onclick="displayDate()">Display Date</button>
   <div id="body" style="visibility:hidden"></div>
 <div id="placeholder" style="width:600px;height:300px;"></div>
+<div id="selection"></div>
 
 <p>You can update a chart periodically to get a real-time effect
 by using a timer to insert the new data in the plot and redraw it.</p>
