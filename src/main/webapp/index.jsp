@@ -22,7 +22,6 @@
 
   <p id="demo">demo</p>
   <p id="demo2">demo2</p>
-  <button type="button" onclick="displayDate()">Display Date</button>
   <div id="body" style="visibility:hidden"></div>
 <div id="placeholder" style="width:600px;height:300px;"></div>
 <div id="selection"></div>
@@ -32,6 +31,7 @@ by using a timer to insert the new data in the plot and redraw it.</p>
 
 <p>Time between updates: <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> milliseconds</p>
 <p><input id="clearSelection" type="button" value="Clear selection" /></p>
+<p id="choices">Show:</p>
 
 
 </body>
