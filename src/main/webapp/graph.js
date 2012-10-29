@@ -3,6 +3,7 @@ $(function() {
   document.getElementById("body").style.color="blue";
   var json_string;
   var json_object;
+  var doupdate = true;
   var yah = {label: "Yahoo", data: []};
   var goog = {label: "Google", data: []};;
   var ms = {label: "Microsoft", data: []};;
@@ -116,6 +117,7 @@ $(function() {
     placeholder.bind("plotselected", function (event, ranges) {
       $("#selection").text(ranges.xaxis.from.toFixed(1) + " to " + ranges.xaxis.to.toFixed(1));
       var zoom = $("#zoom").attr("checked");
+      doupdate = false;
       zoom = 1;
       if (zoom)
         plot = $.plot(placeholder, [ yah, goog, ms ],
@@ -128,26 +130,34 @@ $(function() {
     var plot = $.plot($("#placeholder"), [ yah, goog, ms ], options);
     
     function update() {
-      plot.setData([ yah, goog, ms ]);
-      maxx = find_max_x([ yah, goog, ms ]);
-      // since the axes don't change, we don't need to call plot.setupGrid()
-      plot.draw();
-      
-      options = {
+    if (doupdate) {
+        plot.setData([ yah, goog, ms ]);
+        maxx = find_max_x([ yah, goog, ms ]);
+        // since the axes don't change, we don't need to call plot.setupGrid()
+        plot.draw();
+        
+        options = {
         series: { shadowSize: 0,
-                  series: {
-                    lines: { show: true },
-                    points: { show: true }
-                  }
-                }, // drawing is faster without shadows
+        series: {
+        lines: { show: true },
+        points: { show: true }
+        }
+        }, // drawing is faster without shadows
         yaxis: { min: 0, max: 1200 },
         xaxis: { min: 0, max: maxx, show: true },
         selection: { mode: "x" },
         legend: { noColumns: 2 }
-      };
-      plot = $.plot($("#placeholder"), [ yah, goog, ms ], options);
-      setTimeout(update, updateInterval);
+        };
+        plot = $.plot($("#placeholder"), [ yah, goog, ms ], options);
+        setTimeout(update, updateInterval);
     }
+    
+    }
+    
+    $("#clearSelection").click(function () {
+                               doupdate = true;
+                               update();
+                               });
     
     update();
     });

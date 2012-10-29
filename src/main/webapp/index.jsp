@@ -31,6 +31,7 @@
 by using a timer to insert the new data in the plot and redraw it.</p>
 
 <p>Time between updates: <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> milliseconds</p>
+<p><input id="clearSelection" type="button" value="Clear selection" /></p>
 
 
 </body>
