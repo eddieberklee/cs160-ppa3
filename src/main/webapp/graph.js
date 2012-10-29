@@ -10,23 +10,24 @@ $(function() {
     // read & parse
     json_string = $("#body").html();
     json_object = jQuery.parseJSON(json_string);
-    if (json_object.YAHOO) {
-                 yah = json_object.YAHOO;
-    }
-    if (json_object.GOOGLE) {
-             goog = json_object.GOOGLE;
-    }
-
-    if (json_object.MSFT) {
-             ms = json_object.MSFT;
+    if (json_object) {
+      if (json_object.YAHOO) {
+        yah = json_object.YAHOO;
+      }
+      if (json_object.GOOGLE) {
+        goog = json_object.GOOGLE;
+      }
+      if (json_object.MSFT) {
+        ms = json_object.MSFT;
+      }
     }
     
 
     //alert(JSON.stringify(json_object.YAHOO));
 
-    $("p#demo").html(json_string);
+    // $("p#demo").html(json_string);
     var str = JSON.stringify(yah);
-    $("p#demo2").html(str);
+    // $("p#demo2").html(str);
     // remove #body's content so that DOMNodeInserted
     $("#body").html('');
   });
@@ -109,11 +110,19 @@ $(function() {
     var plot = $.plot($("#placeholder"), [  yah, goog, ms], options);
     
     function update() {
-    plot.setData([  yah, goog, ms]);
-    // since the axes don't change, we don't need to call plot.setupGrid()
-    plot.draw();
-    
-    setTimeout(update, updateInterval);
+      plot.setData([ yah, goog, ms ]);
+      maxx = find_max_x([ yah, goog, ms ]);
+      // since the axes don't change, we don't need to call plot.setupGrid()
+      plot.draw();
+      
+      options = {
+      series: { shadowSize: 0 }, // drawing is faster without shadows
+      yaxis: { min: 0, max: 1200 },
+      xaxis: { min: 0, max: maxx, show: true }
+      };
+      plot = $.plot($("#placeholder"), [  yah, goog, ms], options);
+
+      setTimeout(update, updateInterval);
     }
     
     update();
@@ -121,8 +130,10 @@ $(function() {
 
 });
 
-function displayDate()
-{
+function find_max_x(arr) {
+}
+
+function displayDate() {
     document.getElementById("demo").innerHTML=Date();
 }
 
