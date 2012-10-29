@@ -19,10 +19,10 @@
 </head>
 <body>
 
-  <p id="demo">This is a paragraph.</p>
-  
+  <p id="demo">demo</p>
+  <p id="demo2">demo2</p>
   <button type="button" onclick="displayDate()">Display Date</button>
-  <div id="body"></div>
+  <div id="body" style="visibility:hidden"></div>
 <div id="placeholder" style="width:600px;height:300px;"></div>
 
 <p>You can update a chart periodically to get a real-time effect
