@@ -75,7 +75,12 @@ $(function() {
     
     // setup plot
     var options = {
-    series: { shadowSize: 0 }, // drawing is faster without shadows
+    series: { shadowSize: 0,
+              series: {
+                lines: { show: true },
+                points: { show: true }
+              }
+            }, // drawing is faster without shadows
     yaxis: { min: 0, max: 1200 },
     xaxis: { min: 0, max: 20, show: true },
     selection: { mode: "x" },
@@ -113,7 +118,7 @@ $(function() {
       var zoom = $("#zoom").attr("checked");
       zoom = 1;
       if (zoom)
-        plot = $.plot(placeholder, data,
+        plot = $.plot(placeholder, [ yah, goog, ms ],
           $.extend(true, {}, options, {
             xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to }
           })
@@ -137,7 +142,8 @@ $(function() {
                 }, // drawing is faster without shadows
         yaxis: { min: 0, max: 1200 },
         xaxis: { min: 0, max: maxx, show: true },
-        selection: { mode: "x" }
+        selection: { mode: "x" },
+        legend: { noColumns: 2 }
       };
       plot = $.plot($("#placeholder"), [ yah, goog, ms ], options);
       setTimeout(update, updateInterval);
